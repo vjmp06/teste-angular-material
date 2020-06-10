@@ -1,0 +1,12 @@
+<input matInput placeholder="Project" 
+  [(ngModel)]="selectProjectForNewCollab1"
+  [matAutocomplete]="project" [formControl]="stateCtrl" [value]="project" #state>
+
+<input type="text" value="{{selectProjectForNewCollab1?.id}}" [(ngModel)]="selectProjectForNewCollab">
+
+
+<mat-autocomplete #project="matAutocomplete" [displayWith]="displayFn">
+  <mat-option *ngFor="let project of filteredStates | async" [value]="project">
+    {{ project.name }}
+  </mat-option>
+</mat-autocomplete>
